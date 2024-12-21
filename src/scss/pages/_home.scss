@@ -1,0 +1,826 @@
+@use '../base/colors';
+@use '../base/mixins';
+@use '../base/adaptive';
+@use '../base/variables';
+
+/* page Home */
+.love {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100svh;
+    padding-bottom: mixins.toRem(45);
+    background: colors.$bgLove;
+    @media (max-width: variables.$tablet) {
+        max-height: mixins.toRem(1368);
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    
+    // .love__image
+    &__image {
+        position: relative;
+        left: -100%;
+        &._watcher-view { 
+            left: 0%;
+            transition: all 1s 0.5s;
+        }
+
+        img{
+            aspect-ratio: 700 / 700;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @media (max-width: variables.$tablet) {
+                transform: translate(0, mixins.toRem(-100));
+                aspect-ratio: 1156 / 700;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        @media (max-width: variables.$tablet) {
+            order: 2;
+        }
+    }
+
+    // .love__content
+    &__content {
+        transform: translate(mixins.toRem(50) ,0);
+        opacity: 0;
+        align-self: center;
+        max-width: mixins.toRem(392);
+        @media (min-width: variables.$tablet) {
+            &._watcher-view { 
+                transform: translate(mixins.toRem(-40) ,0);
+                opacity: 1;
+                transition: all 0.5s 0.5s;
+            }
+        }
+
+        @media (max-width: variables.$tablet) {
+            position: relative;
+            z-index: 5;
+            margin: 0 auto;
+            padding-top: mixins.toRem(193);
+            align-self: start;
+            transform: translate(0);
+            text-align: center;
+            opacity: 1;
+            order: 1;
+        }
+    }
+
+    // .love__text
+    &__text {
+        font-family: 'Lena';
+        @include adaptive.adaptiveValue('font-size', 20, 18, 0, 1466, 768.98);
+        @include adaptive.adaptiveValue('padding-bottom', 58, 20, 0, 1466, 768.98);
+    }
+
+    // .love__title
+    &__title {
+        font-family: 'KollektifBold';
+        @include adaptive.adaptiveValue('font-size', 50, 35, 0, 1466, 768.98);
+        @include adaptive.adaptiveValue('padding-bottom', 48, 18, 0, 1466, 768.98);
+        @media (max-width: variables.$tablet) {
+            @include adaptive.adaptiveValue('font-size', 50, 38, 0, 767.98, 320);
+            padding-bottom: 0;
+        }
+    }
+
+    // .love__btn
+    &__btn {
+        font-family: 'Lena';
+        border: mixins.toRem(1) solid colors.$colorBlack;
+        border-radius: mixins.toRem(3);
+        padding-top: mixins.toRem(11);
+        padding-bottom: mixins.toRem(11);
+        width: mixins.toRem(373);
+        transition: all 0.5s;
+        @include adaptive.adaptiveValue('font-size', 20, 18, 0, 1466, 768.98);
+        @media (any-hover: hover){
+            &:hover{
+                color: colors.$colorWhite;
+                background-color: colors.$colorBlack;
+                transition: all 0.5s;
+            }
+        }
+
+        @media (max-width: variables.$tablet) {
+            display: none;
+        }
+    }
+}
+
+/* section Collection */
+.collection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: mixins.toRem(160);
+    padding-bottom: mixins.toRem(160);
+    @media (max-width: variables.$mobile) {
+        @include adaptive.adaptiveValue('padding-top', 100, 50, 0, 767.98, 320);
+        @include adaptive.adaptiveValue('padding-bottom', 100, 50, 0, 767.98, 320); 
+    }
+
+    &--before{
+        position: absolute;
+        top: mixins.toRem(-45);
+        left: 0;
+        color: colors.$colorWhite;
+        background-color: colors.$colorBlack;
+        padding-top: mixins.toRem(21);
+        padding-bottom: mixins.toRem(21);
+        padding-right: mixins.toRem(128);
+        padding-left: mixins.toRem(156);
+        font-size: mixins.toRem(41);
+        font-family: 'Lena';
+        span{
+            font-family: 'KollektifBold';
+            @include adaptive.adaptiveValue('font-size', 40, 30);
+        }
+
+        @media (max-width: variables.$mobile) {
+            padding-left: 0;
+            padding-right: 0;
+            text-align: center;
+            @include adaptive.adaptiveValue('padding-top', 21, 11, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-bottom', 21, 11, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('font-size', 41, 28, 0, 767.98, 320);
+            width: 100%;
+            span{
+                @include adaptive.adaptiveValue('font-size', 40, 27, 0, 767.98, 320);
+            }
+        }
+    }
+
+    &--after{
+        position: absolute;
+        bottom: mixins.toRem(-45);
+        left: 0;
+        font-size: mixins.toRem(41);
+        font-family: 'Lena';
+        color: colors.$colorWhite;
+        background-color: colors.$colorBlack;
+        padding-top: mixins.toRem(21);
+        padding-right: mixins.toRem(128);
+        padding-bottom: mixins.toRem(21);
+        padding-left: mixins.toRem(156);
+        span{
+            font-family: 'KollektifBold';
+            font-size: mixins.toRem(40);
+        }
+
+        @media (max-width: variables.$mobile) {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            text-align: center;
+            @include adaptive.adaptiveValue('padding-top', 21, 11, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-bottom', 21, 11, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('font-size', 41, 28, 0, 767.98, 320);
+            span{
+                @include adaptive.adaptiveValue('font-size', 40, 27, 0, 767.98, 320);
+            }
+        }
+    }
+
+    // .collection__container
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: mixins.toRem(1000);
+    }
+
+    // .collection__column--lotos
+    &__column--lotos{
+        position: relative;
+        right: -100%;
+        display: flex;
+        align-items: center;
+        gap: mixins.toRem(76);
+        opacity: 0;
+        &._watcher-view { 
+            opacity: 1;
+            right: 0%;
+            transition: all 1s 0.5s;
+        }  
+
+        @media (min-width: variables.$mobileSmall) {
+            &._watcher-view { 
+                opacity: 1;
+                right: 0%;
+                transition: all 1s 0.5s;
+            }  
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            right: 0%; 
+            gap: 0;
+            &._watcher-view { 
+                opacity: 1;
+                transition: all 1s 0.5s;
+            }  
+        }
+    }
+
+    // .collection__column--blueberry
+    &__column--blueberry{
+        position: relative;
+        left: -100%;
+        display: flex;
+        align-items: center;
+        gap: mixins.toRem(76);
+        opacity: 0;
+        &._watcher-view { 
+            opacity: 1;
+            left: 0%;
+            transition: all 1s 0.5s;
+        }
+
+        @media (min-width: variables.$mobileSmall) {
+            &._watcher-view { 
+                opacity: 1;
+                left: 0%;
+                transition: all 1s 0.5s;
+            }  
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            left: 0%; 
+            gap: 0;
+            &._watcher-view { 
+                opacity: 1;
+                transition: all 1s 0.5s;
+            } 
+        }
+    }
+
+    // .collection__column--chocolate-chip
+    &__column--chocolate-chip{
+        position: relative;
+        right: -100%;
+        display: flex;
+        align-items: center;
+        gap: mixins.toRem(76);
+        opacity: 0;
+        &._watcher-view { 
+            opacity: 1;
+            right: 0%;
+            transition: all 1s 0.5s;
+        }
+
+        @media (min-width: variables.$mobileSmall) {
+            &._watcher-view { 
+                opacity: 1;
+                right: 0%;
+                transition: all 1s 0.5s;
+            }  
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            right: 0%; 
+            gap: 0;
+            &._watcher-view { 
+                opacity: 1;
+                transition: all 1s 0.5s;
+            } 
+        }
+    }
+
+    // .collection__column--rasberry
+    &__column--rasberry{
+        position: relative;
+        left: -100%;
+        display: flex;
+        align-items: center;
+        gap: mixins.toRem(76);
+        opacity: 0;
+        &._watcher-view { 
+            opacity: 1;
+            left: 0%;
+            transition: all 1s 0.5s;
+        }
+
+        @media (min-width: variables.$mobileSmall) {
+            &._watcher-view { 
+                opacity: 1;
+                left: 0%;
+                transition: all 1s 0.5s;
+            }  
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            left: 0%; 
+            gap: 0;
+            &._watcher-view { 
+                opacity: 1;
+                transition: all 1s 0.5s;
+            } 
+        }
+    }
+
+    // .collection__column--chocolate
+    &__column--chocolate{
+        position: relative;
+        right: -100%;
+        display: flex;
+        align-items: center;
+        gap: mixins.toRem(76);
+        opacity: 0;
+        &._watcher-view { 
+            opacity: 1;
+            right: 0%;
+            transition: all 1s 0.5s;
+        }
+
+        @media (min-width: variables.$mobileSmall) {
+            &._watcher-view { 
+                opacity: 1;
+                right: 0%;
+                transition: all 1s 0.5s;
+            }  
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            right: 0%; 
+            gap: 0;
+            &._watcher-view { 
+                opacity: 1;
+                transition: all 1s 0.5s;
+            } 
+        }
+    }
+
+    // .collection__column--pistachio
+    &__column--pistachio{
+        position: relative;
+        left: -100%;
+        display: flex;
+        align-items: center;
+        gap: mixins.toRem(76);
+        opacity: 0;
+        &._watcher-view { 
+            opacity: 1;
+            left: 0%;
+            transition: all 1s 0.5s;
+        }
+
+        @media (min-width: variables.$mobileSmall) {
+            &._watcher-view { 
+                opacity: 1;
+                left: 0%;
+                transition: all 1s 0.5s;
+            }  
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            left: 0%; 
+            gap: 0;
+            &._watcher-view { 
+                opacity: 1;
+                transition: all 1s 0.5s;
+            } 
+        }
+    }
+}
+
+.column {
+    &__normal-layout--content{
+        max-width: mixins.toRem(430);
+        position: relative;
+        z-index: 5;
+        @include adaptive.adaptiveValue('translate', 30, 80, 0, 479.98, 320);
+        @media (max-width: variables.$mobile) {
+            width: 60%;
+            transform: translate(mixins.toRem(30));
+        }
+    }
+
+    &__normal-layout--image{
+        img{
+            object-fit: cover;
+            overflow: hidden;
+        }
+        @media (max-width: variables.$mobile) {
+            width: 40%;
+            transform: translate(mixins.toRem(-30));
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            transform: translate(toRem(0));
+        }
+    }
+
+    &__inverse-layout--content{
+        position: relative;
+        z-index: 5;
+        padding-left: mixins.toRem(15);
+        order: 2;
+        @include adaptive.adaptiveValue('translate', -30, -90, 0, 479.98, 320);
+        @media (max-width: variables.$mobile) {
+            padding: 0;
+            width: 60%;
+        }
+    }
+
+    &__inverse-layout--image{
+        order: 1;
+        img{
+            object-fit: cover;
+            overflow: hidden;
+        }
+        @media (max-width: variables.$mobile) {
+            width: 40%;
+            transform: translate(mixins.toRem(-90));
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            transform: translate(mixins.toRem(-130));
+        }
+    }
+
+    &--title{
+        font-family: 'KollektifBold';
+        font-size: mixins.toRem(30);
+        padding-bottom: mixins.toRem(27);
+    }
+
+    &--text{
+        font-family: 'Lena';
+        font-size: mixins.toRem(18);
+    }
+}
+
+/* section location */
+.location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: mixins.toRem(127);
+    padding-bottom: mixins.toRem(91);
+    background: colors.$bgLocation;
+
+    // .location__body
+    &__body {
+        width: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include adaptive.adaptiveValue('gap', 220, 20, 0, 1466, 545.98);
+        @media (max-width: mixins.toEm(545)) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: mixins.toRem(50);
+        }
+    }
+
+    // .location__koln
+    &__koln {
+        position: relative;
+        left: -100%;
+        width: 100%;
+        height: auto;
+        opacity: 0;
+        background-color: colors.$bgLocationCard;
+        transition: all 0.3s;
+        &._watcher-view{
+            opacity: 1;
+            left: 0%;
+            transition: all 0.5s 0.5s;
+        }
+
+        &::after{
+            position: absolute;
+            content: '';
+            bottom: 41.76%;
+            width: 100%;
+            height: 0;
+            background-color: colors.$bgLocationHover;
+            transition: all 0.3s;
+        }
+
+        @media (any-hover: hover){
+            &:hover::after{
+                height: 58.2%;
+                transition: all 0.3s;
+            }
+        }
+
+        @media (max-width: variables.$mobile) {
+            &::after{
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 58.2%;
+                background-color: colors.$bgLocationHover;
+            } 
+        }
+
+        span{
+            position: absolute;
+            bottom: 38%;
+            left: 50%;
+            font-family: 'KollektifBold';
+            color: colors.$colorGray;
+            opacity: 0;
+            transform: translate(-50%, 50%);
+            transition: all 0.3s 0s;
+            @include adaptive.adaptiveValue('font-size', 40, 25, 0, 1466, 768.98);
+        }
+
+        @media (any-hover: hover){
+            &:hover span{
+                z-index: 5;
+                bottom: 75%;
+                opacity: 1;
+                transition: all 0.3s 0.2s;
+            }
+        }
+
+        @media (max-width: variables.$mobile) {
+            span{
+                z-index: 5;
+                bottom: 75%;
+                text-align: center;
+                width: 100%;
+                opacity: 1;
+                transition: all 0.3s 0.2s;
+                font-size: mixins.toRem(25);
+            } 
+        }
+        
+        &::before{
+            position: absolute;
+            content: '';
+            bottom: 0;
+            width: 100%;
+            height: 41.767068%;
+            transition: all 0.3s;
+
+        }
+
+        @media (any-hover: hover){
+            &:hover::before{
+                background-color: colors.$bgLocationHover;
+                transition: all 0.3s;
+            }
+        }
+    }
+
+    // .location__main
+    &__main {
+        position: relative;
+        right: -100%;
+        width: 100%;
+        height: auto;
+        opacity: 0;
+        background-color: colors.$bgLocationCard;
+        transition: all 0.3s;
+        &._watcher-view{
+            opacity: 1;
+            right: 0%;
+            transition: all 0.5s 0.5s;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            bottom: 41.76%;
+            width: 100%;
+            height: 0;
+            background-color: colors.$bgLocationHover;
+            transition: all 0.3s;
+        }
+
+        @media (any-hover: hover){
+            &:hover::after{
+                height: 58.2%;
+                transition: all 0.3s;
+            }
+        }
+
+        @media (max-width: variables.$mobile) {
+            &::after{
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 58.2%;
+                background-color: colors.$bgLocationHover;
+            } 
+        }
+        span{
+            position: absolute;
+            bottom: 38%;
+            left: 50%;
+            font-family: 'KollektifBold';
+            opacity: 0;
+            color: colors.$colorGray;
+            transform: translate(-50%, 50%);
+            transition: all 0.3s 0s;
+            @include adaptive.adaptiveValue('font-size', 40, 25, 0, 1466, 768.98);
+        }
+
+        @media (max-width: variables.$mobile) {
+            span{
+                z-index: 5;
+                bottom: 75%;
+                text-align: center;
+                width: 100%;
+                opacity: 1;
+                transition: all 0.3s 0.2s;
+                font-size: mixins.toRem(25);
+            } 
+        }
+
+        @media (any-hover: hover){
+            &:hover span{
+                z-index: 5;
+                bottom: 75%;
+                opacity: 1;
+                transition: all 0.3s 0.2s;
+            } 
+        }
+
+        &::before{
+            position: absolute;
+            content: '';
+            bottom: 0;
+            width: 100%;
+            height: 41.767068%;
+            transition: all 0.3s;
+
+        }
+
+        @media (any-hover: hover){
+            &:hover::before{
+                background-color: colors.$bgLocationHover;
+                transition: all 0.3s;
+            }
+        }
+    }
+
+    // .location__text-block
+    &__text-block {
+        position: relative;
+        z-index: 5;
+        padding-top: 7.254902%;
+        padding-bottom: 12.156863%;
+        padding-left: 4.901961%;
+        background-color: colors.$bgLocation;
+        @media (max-width: variables.$mobile) {
+            background-color: colors.$bgLocationHover;
+        }
+    }
+
+    // .location__title
+    &__title {
+        position: relative;
+        z-index: 5;
+        font-family: 'KollektifBold';
+        padding-bottom: mixins.toRem(27);
+        @include adaptive.adaptiveValue('font-size', 30, 25, 0, 1466, 545.98);
+        @media (max-width: mixins.toEm(545)) {
+            @include adaptive.adaptiveValue('font-size', 30, 25, 0, 545.98, 320);
+        }
+    }
+
+    // .location__address
+    &__address {
+        position: relative;
+        z-index: 5;
+        padding-bottom: mixins.toRem(16);
+        font-family: 'Kollektif';
+        @include adaptive.adaptiveValue('font-size', 18, 15, 0, 767.98, 545.98);
+        @media (max-width: mixins.toEm(545)) {
+            font-size: mixins.toRem(18);
+        }
+    }
+
+    // .location__text
+    &__text {
+        position: relative;
+        z-index: 5;
+        font-family: 'Kollektif';
+        @include adaptive.adaptiveValue('font-size', 18, 15, 0, 767.98, 545.98);
+        @media (max-width: mixins.toEm(545)) {
+            font-size: mixins.toRem(18);
+        }
+    }
+
+    // .locaton__image
+    &__image{
+        height: auto;
+        img{
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+/* section careers */
+.careers {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @media (max-width: variables.$mobile) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    // .careers__jobs
+    &__jobs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: colors.$bgJobs;
+        @media (max-width: variables.$mobile) {
+            padding-top: mixins.toRem(123);
+            padding-bottom: mixins.toRem(134);
+        }
+    }
+
+    // .careers__franchise
+    &__franchise {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: colors.$bgFranchise;
+        @media (max-width: variables.$mobile) {
+            padding-top: mixins.toRem(123);
+            padding-bottom: mixins.toRem(134);
+        }
+    }
+
+    // .careers__box
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: mixins.toRem(340);
+        opacity: 0;
+        transform: translate(0, mixins.toRem(-200));
+        &._watcher-view{
+            opacity: 1;
+            transform: translate(0, 0);
+            transition: all 0.5s 1s;
+        }
+        
+        @media (max-width: variables.$mobile) {
+            max-width: 100%;
+            opacity: 0;
+            transform: translate(0, mixins.toRem(40));
+            &._watcher-view{
+                transform: translate(0, mixins.toRem(0));
+                opacity: 1;
+                transition: all 0.5s 1s;
+            }
+        }
+    }
+
+    // .careers__title
+    &__title {
+        font-family: 'KollektifBold';
+        font-size: mixins.toRem(40);
+        padding-bottom: mixins.toRem(70);
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('font-size', 40, 30, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-bottom', 70, 40, 0, 767.98, 320);
+        }
+    }
+
+    // .careers__text
+    &__text {
+        font-family: 'Kollektif';
+        text-align: center;
+        line-height: 166.667%;
+        padding-bottom: mixins.toRem(117);
+        font-size: mixins.toRem(18);
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('padding-right', 40, 15, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-left', 40, 15, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-bottom', 117, 58, 0, 767.98, 320);
+        }
+    }
+
+    // .careers__btn
+    &__btn {
+        font-family: 'Lena';
+        font-size: mixins.toRem(20);
+        width: mixins.toRem(297);
+        border: mixins.toRem(1) solid colors.$colorBlack;
+        border-radius: mixins.toRem(3);
+        padding-top: mixins.toRem(11);
+        padding-bottom: mixins.toRem(11);
+        transition: all 0.5s ease-in;
+        @media (any-hover: hover){
+            &:hover{
+                color: colors.$colorWhite;
+                background-color: colors.$colorBlack;
+                transition: all 0.5s ease-in;
+            }
+        }
+    }
+}

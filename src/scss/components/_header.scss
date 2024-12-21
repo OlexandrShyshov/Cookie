@@ -1,0 +1,100 @@
+@use '../base/colors';
+@use '../base/mixins';
+@use '../base/adaptive';
+@use '../base/variables';
+
+/* style for Header section */
+.header {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    padding-top: mixins.toRem(20);
+    padding-bottom: mixins.toRem(20);
+    transition: all 0.3s;
+    background-color: colors.$bgHeader;
+    &._header-scroll {
+        padding-top: mixins.toRem(5);
+        padding-bottom: mixins.toRem(5);
+        transition: all 0.3s;
+    } 
+
+    // .header__container
+    &__container {
+        height: mixins.toRem(53);
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        @media (min-width: variables.$mobile) {
+            transform: translate(0, mixins.toRem(-100));
+            .loaded &{
+                transition: transform 1s 0.5s;
+                transform: translate(0, 0);
+            } 
+        }
+    }
+
+    // .header__logo
+    &__logo {
+        position: relative;
+        z-index: 5;
+    }
+
+    // .header__menu
+    &__menu {
+        @media (max-width: variables.$mobile) {
+            display: flex;
+            justify-content: end;
+        }
+    }
+}
+.menu {
+    // .menu__body
+    &__body {
+        @media (max-width: variables.$mobile) {
+            padding-top: mixins.toRem(150);
+        }
+    }
+
+    // .menu__list
+    &__list {
+        display: flex;
+        justify-content: end;
+        @include adaptive.adaptiveValue('gap', 68, 20, 0, 1466, 768.98);
+        @media (max-width: variables.$mobile) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: mixins.toRem(25);
+        }
+    }
+
+    // .menu__item
+    &__item {
+        position: relative;
+        @include adaptive.adaptiveValue('font-size', 20, 15);
+        &::before{
+            content: '';
+            position: absolute;
+            height: mixins.toRem(2);
+            width: 0%;
+            bottom: 0;
+            left: 50%;
+            background-color: black;
+            transition: all 0.2s ease-in;
+        }
+        
+        @media (any-hover: hover){
+            &:hover::before{
+                left: 0;
+                width: 100%;
+                transition: all 0.2s ease-in;
+            }
+        }
+
+        @media (max-width: variables.$mobile) {
+            font-size: mixins.toRem(23);
+        }
+    }
+}

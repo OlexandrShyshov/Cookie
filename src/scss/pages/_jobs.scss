@@ -1,0 +1,137 @@
+@use '../base/colors';
+@use '../base/mixins';
+@use '../base/adaptive';
+@use '../base/variables';
+
+/* page Jobs */
+.open {
+    // .open__page
+    &__page {
+        padding-bottom: mixins.toRem(88);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: colors.$bgLocationLinear;
+        @include adaptive.adaptiveValue('padding-top', 144, 84, 0, 1466, 320);
+    }
+
+    // .open__container
+    &__container { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: mixins.toRem(1160);
+        padding-top: mixins.toRem(78);
+        padding-right: mixins.toRem(88);
+        padding-left: mixins.toRem(88);
+        padding-bottom: mixins.toRem(88);
+        background: colors.$bgPeach;
+        transform: translateY(mixins.toRem(-100));
+        opacity: 0;
+        @include adaptive.adaptiveValue('padding-top', 78, 48, 0, 1466, 320);
+        @include adaptive.adaptiveValue('padding-bottom', 88, 58, 0, 1466, 320);
+        &._watcher-view{
+            transform: translateY(mixins.toRem(0));
+            opacity: 1;
+            transition: all 0.5s 0.5s;
+        }
+    }
+
+    // .open__box
+    &__box {
+        display: flex;
+        flex-direction: column;
+        gap: mixins.toRem(20);
+        border-bottom: mixins.toRem(2) solid colors.$colorBorder;
+        @include adaptive.adaptiveValue('width', 963, 300, 0, 1466, 320);
+    }
+
+    // .open__item
+    &__item {
+        height: mixins.toRem(55);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: mixins.toRem(21);
+        padding-left: mixins.toRem(21);
+        font-family: 'KollektifBold';
+        @include adaptive.adaptiveValue('font-size', 25, 18, 0, 1466, 320);
+        @include adaptive.adaptiveValue('width', 963, 300, 0, 1466, 320);
+        &--svg{
+            width: mixins.toRem(20);
+            height: mixins.toRem(10);
+            transition: all 0.3s;
+        }
+    }
+
+    // .open__text
+    &__text {
+        display: none;
+        font-family: 'Kollektif';
+        max-width: mixins.toRem(900);
+        font-size: mixins.toRem(18);
+        text-align: justify;
+        line-height: 166.667%;
+        padding-bottom: mixins.toRem(20);
+        &.menu-active{
+            display: block;
+        }
+        h2{
+            font-family: 'KollektifBold';
+            font-size: mixins.toRem(18);
+            line-height: 166.667%;
+        }
+
+         // .open__text--paragraph
+        &-paragraph{
+            padding-bottom: mixins.toRem(20);
+        }
+
+        // .open__text-block
+        &-block{
+            padding-top: mixins.toRem(20);
+        }
+
+        // .open__text--list
+        &-list {
+            padding-left: mixins.toRem(20);
+            li{
+                list-style: disc;
+            }
+        }
+    }
+
+    // .open__text-block
+    &__text-block {
+        padding-left: mixins.toRem(20);
+        // .open__text-block--list
+        &--list {
+            li{
+                list-style: disc;
+            }
+        }
+    }
+
+    // .open__btn
+    &__btn{
+        text-align: center;
+        font-size: mixins.toRem(20);
+        font-family: 'Lena';
+        padding-top: mixins.toRem(11);
+        padding-bottom: mixins.toRem(11);
+        width: mixins.toRem(244);
+        border: mixins.toRem(1) solid colors.$colorBlack;
+        border-radius: mixins.toRem(3);
+        transition: all 0.5s;
+        span{
+            font-family: 'KollektifBold';
+            font-size: mixins.toRem(20);
+        }
+        &:hover{
+            background: colors.$colorBlack;
+            color: colors.$colorWhite;
+            transition: all 0.5s;
+        }
+    }
+}

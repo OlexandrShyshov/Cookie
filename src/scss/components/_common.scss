@@ -1,0 +1,315 @@
+@use '../base/colors';
+@use '../base/mixins';
+@use '../base/adaptive';
+@use '../base/variables';
+
+/* First section */
+.first-section{
+    position: relative;
+    padding-top: mixins.toRem(101);
+    background: colors.$bgLove;
+    @include adaptive.adaptiveValue('height', 617, 350, 0, 1466, 767.98);
+    @media (max-width: variables.$mobile) {
+        height: auto;
+    }
+
+    //  .first-section__container
+    &__container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @media (max-width: variables.$mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    // .first-section__content
+    &__content{
+        z-index: 5;
+        opacity: 0;
+        align-self: center;
+        justify-self: center;
+        transform: translateX(-100%);
+        &._watcher-view{
+            opacity: 1;
+            transform: translateX(0%);
+            transition: all 1s 0.5s;
+        }
+
+        @media (max-width: variables.$mobile) {
+            padding-top: mixins.toRem(50);
+        }
+    }
+
+    // .first-section__subtitle
+    &__subtitle {
+        font-family: 'Lena';
+        font-size: mixins.toRem(20);
+    }
+
+    // .first-section__title
+    &__title {
+        font-family: 'KollektifBold';
+        font-size: mixins.toRem(50);
+    }
+
+    // .first-section__image
+    &__image {
+        opacity: 0;
+        max-width: mixins.toRem(750);
+        transform: translateX(100%);
+        @include adaptive.adaptiveValue('padding-top', 125, 50, 0, 1466, 767.98);
+        &._watcher-view{
+            opacity: 1;
+            transform: translateX(mixins.toRem(-100));
+            transition: all 1s 0.5s;
+        }
+
+        @media (max-width: variables.$mobile) {
+            padding: mixins.toRem(0);
+            &._watcher-view{
+                opacity: 1;
+                transform: translateX(mixins.toRem(0));
+                transform: translateY(mixins.toRem(30));  
+            }
+        }
+    }
+
+    // .first-section__image-img
+    &__image-img {
+        aspect-ratio: 750 / 500;
+    }
+}
+
+//текстовий блок для контента
+.contact {
+    padding-bottom: mixins.toRem(51);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: colors.$bgLove;
+    @include adaptive.adaptiveValue('padding-top', 172, 121, 0, 1466, 320);
+
+    // .contact__container
+    &__container {
+        text-align: center;
+
+        // .contact__container--title
+        &--title {
+            font-family: 'Kollektif';
+            padding-bottom: mixins.toRem(30);
+            @include adaptive.adaptiveValue('font-size', 50, 30, 0, 1466, 320);
+
+            span{
+                font-weight: 700;
+            }
+        }
+
+        // .contact__container--text
+        &--text {
+            font-family: 'Kollektif';
+            line-height: 166.667%;
+            @include adaptive.adaptiveValue('font-size', 18, 15, 0, 1466, 320);
+        }
+    }
+}
+
+//текстовий блок
+.text-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include adaptive.adaptiveValue('padding-top', 213, 103, 0, 1466, 767.98);
+    @include adaptive.adaptiveValue('padding-bottom', 164, 83, 0, 1466, 767.98);
+
+    // .text-section__container
+	&__container {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        flex-direction: column;
+        gap: mixins.toRem(30);
+        opacity: 0;
+        transform: translateY(mixins.toRem(-100));
+        &._watcher-view{
+         opacity: 1;
+         transform: translateY(mixins.toRem(0));
+         transition: all 0.5s 0.5s;
+        }
+    }
+
+    // .text-section__container--flex
+    &__container--flex {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: mixins.toRem(50);
+        max-width: mixins.toRem(1130);
+        height: auto; 
+    }
+
+    // .text-section__paragraph
+    &__paragraph{
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+        line-height: 166.667%;
+        text-align: center;
+        max-width: mixins.toRem(1130);
+        @media (max-width: variables.$mobileSmall) {
+            text-align: justify;
+        }
+    }
+
+    // .text-section__paragraph--flex
+    &__paragraph--flex {
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+        line-height: 166.667%;
+        text-align: justify;
+        transform: translateY(mixins.toRem(100));
+        opacity: 0;
+        &._watcher-view{
+            transform: translateY(mixins.toRem(0));
+            opacity: 1;
+            transition: all 0.5s 0.5s;
+        }
+    }
+
+    // .text-section__requirements--flex
+    &__requirements--flex {
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+        line-height: 166.667%;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(mixins.toRem(100));
+        opacity: 0;
+        &._watcher-view{
+            transform: translateY(mixins.toRem(0));
+            opacity: 1;
+            transition: all 0.5s 0.5s;
+        }
+
+        span{
+            font-weight: 700;
+        }
+    }
+
+    // .text-section__requirements--flex-list
+    &__requirements--flex-list {
+        display: flex;
+        flex-direction: column;
+        padding-left: mixins.toRem(20);
+        padding-top: mixins.toRem(20);
+    }
+
+    // .text-section__requirements--flex-item
+    &__requirements--flex-item {
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+        line-height: 166.667%;
+        list-style-type: disc;
+    }
+    &__imprint{
+        @include adaptive.adaptiveValue('padding-top', 100, 60, 0, 1466, 767.98);
+    }
+}
+
+//остання секція
+.last-section{
+    padding-top: mixins.toRem(74);
+    padding-bottom: mixins.toRem(100);
+    background: colors.$bgJobs;
+
+    // .last-section__container
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // .last-section__box
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(mixins.toRem(-100));
+        opacity: 0;
+        @include adaptive.adaptiveValue('max-width', 675, 475, 0, 1466, 767.98);
+        &._watcher-view{
+            transform: translateY(mixins.toRem(0));
+            opacity: 1;
+            transition: all 0.5s 0.5s;
+        }
+
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('max-width', 475, 290, 0, 767.98, 320);
+        }
+    }
+
+    // .last-section__title
+    &__title {
+        font-family: 'Lena';
+        font-size: mixins.toRem(40);
+        text-align: center;
+        @include adaptive.adaptiveValue('padding-bottom', 50, 30, 0, 1466, 767.98);
+
+        span{
+            font-family: 'KollektifBold';
+        }
+    }
+
+    // .last-section__text
+    &__text {
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+        text-align: center;
+        line-height: 166.667%;
+        @include adaptive.adaptiveValue('padding-bottom', 90, 50, 0, 1466, 767.98);
+    }
+
+    // .last-section__btn
+    &__btn {
+        padding-top: mixins.toRem(11);
+        padding-bottom: mixins.toRem(7);
+        text-align: center;
+        font-family: 'Lena';
+        font-size: mixins.toRem(20);
+        border: mixins.toRem(1) solid colors.$colorBlack;
+        border-radius: mixins.toRem(3);
+        transition: all 0.5s;
+        @include adaptive.adaptiveValue('width', 592, 441, 0, 1466, 767.98);
+
+        span{
+            font-family: 'KollektifBold';
+        }
+
+        @media (any-hover: hover){
+            &:hover{
+                background: colors.$colorBlack;
+                color: colors.$colorWhite;
+                transition: all 0.5s;
+            }
+        }
+        
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('width', 475, 290, 0, 767.98, 320);
+        }
+    }
+}
+
+//допоміжні класи для динамічного меню
+.svg-rotate{
+    .open__item--svg{
+        transform: rotate(-180deg);
+        transition: all 0.3s;
+    }
+}
+
+.padding-bottom{
+    @include adaptive.adaptiveValue('padding-bottom', 71, 41, 0, 1466, 320);
+}
+
+.wh140{
+    width: mixins.toRem(140);
+    height: mixins.toRem(140);
+}

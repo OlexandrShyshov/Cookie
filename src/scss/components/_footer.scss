@@ -1,0 +1,180 @@
+@use '../base/colors';
+@use '../base/mixins';
+@use '../base/adaptive';
+@use '../base/variables';
+
+/* style for Footer section */
+.footer{
+    position: relative;
+    padding-top: mixins.toRem(140);
+    padding-bottom: mixins.toRem(77);
+    background-color: colors.$bgFooter;
+    color: colors.$colorFooter;
+    @media (max-width: variables.$mobile) {
+        @include adaptive.adaptiveValue('padding-top', 70, 30, 0, 767.98, 398.98);  
+        @include adaptive.adaptiveValue('padding-bottom', 30, 15, 0, 767.98, 398.98);  
+    }
+
+    @media (max-width: mixins.toEm(398.98)) {
+        padding-top: mixins.toRem(58);
+    }
+
+    // .footer__container
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: mixins.toRem(100);
+        opacity: 0;
+        &._watcher-view{
+            opacity: 1;
+            transition: all 0.5s 0.5s;
+        }
+
+        @media (max-width: variables.$mobile) {
+            gap: mixins.toRem(30);
+        }
+    }
+
+    // .footer__top
+    &__top {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        @media (max-width: variables.$mobile) {
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(3, auto); 
+        }
+
+        @media (max-width: mixins.toEm(398.98)) {
+            grid-template-columns: auto;
+            grid-template-rows: repeat(2, auto);
+        }
+    }
+
+    // .footer__logo
+    &__logo {
+        justify-self: start;
+        @media (max-width: variables.$mobile) {
+            order: 1;
+            padding-bottom: mixins.toRem(70);
+        }
+
+        @media (max-width: mixins.toEm(398.98)) {
+            display: none;
+        }
+    }
+
+    // .footer__list
+    &__list {
+        justify-self: center;
+        align-self: start;
+        @media (max-width: variables.$tablet) {
+            justify-self: end;
+        }
+
+        &:nth-of-type(1) {
+            @media (max-width: variables.$mobile) {
+                justify-self: start;
+                order: 3;
+            } 
+        }
+        &:nth-of-type(2) {
+            @media (max-width: variables.$mobile) {
+                justify-self: start;
+                grid-column: 1;
+                grid-row: 3;
+                order: 4;
+                padding-bottom: mixins.toRem(70);
+            } 
+            @media (max-width: mixins.toEm(398.98)) {
+                padding-bottom: mixins.toRem(70);
+            }
+        }
+    }
+
+    // .footer__item
+    &__item {
+        line-height: 166.667%;
+        transition: all 0.2s ease-in;
+        @include adaptive.adaptiveValue('font-size', 20, 18, 0, 1920, 1466);
+        &:hover{
+            color: colors.$colorFooterHover;
+            transition: all 0.2s ease-in;
+        }
+
+        @media (max-width: variables.$mobile) {
+            font-size: mixins.toRem(23);
+        }
+    }
+
+    // .footer__languages
+    &__languages {
+        font-family: 'KollektifBold';
+        font-size: mixins.toRem(18);
+        justify-self: end;
+        span{
+            font-family: 'Kollektif';
+            font-size: mixins.toRem(18);
+        }
+
+        @media (max-width: variables.$mobile) {
+            align-self: center;
+            order: 2;
+            
+        }
+        
+        @media (max-width: mixins.toEm(398.98)) {
+            justify-self: start;
+            grid-column: 1;
+            grid-row: 4;
+        }
+    }
+
+    // .footer__language
+    &__language {
+        align-self: end;
+        transition: all 0.2s ease-in; 
+        &--hover{
+            &:hover{
+                color: colors.$colorFooterHover;
+                transition: all 0.2s ease-in; 
+            }
+        }
+    }
+
+    // .footer__down
+    &__down {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        @media (max-width: mixins.toEm(398.98)) {
+            flex-direction: column;
+            align-items: start;
+            gap: mixins.toRem(25);
+        }
+    }
+
+    // .footer__socials
+    &__socials {
+        display: flex;
+        flex-direction: column;
+        gap: mixins.toRem(10);
+        font-size: mixins.toRem(25);
+        @media (max-width: mixins.toEm(398.98)) {
+           gap: mixins.toRem(5); 
+        }
+
+        // .footer__socials--icons
+        &--icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: mixins.toRem(14)
+        }
+    }
+
+    // .footer__sums
+    &__sums {
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+    }
+}

@@ -1,0 +1,46 @@
+@use 'mixins';
+@use 'colors';
+
+.icon{
+    fill: transparent;
+    stroke: transparent;
+    width: mixins.toRem(62);
+    height: mixins.toRem(62);
+
+    //you need just add styles for fill or stroke//
+    &--header-logo{
+        width: mixins.toRem(180);
+        height: mixins.toRem(53);
+        fill: #000;
+    }
+
+    &--footer-logo{
+        width: mixins.toRem(180);
+        height: mixins.toRem(53);
+        fill: #FFF;
+    }
+
+    &--footer{
+        width: mixins.toRem(25);
+        height: mixins.toRem(25); 
+        fill: #FFF;
+        transition: fill 0.2s ease;
+        &:hover{
+            fill: colors.$colorFooterHover;
+            transition: fill 0.2s ease;
+        }
+    }
+
+    &--polygon{
+        width: mixins.toRem(24);
+        height: mixins.toRem(12);
+        stroke: #000;
+    }
+
+    &--story{
+        width: mixins.toRem(120);
+        height: mixins.toRem(120);
+        margin-bottom: mixins.toRem(35);
+    }
+}
+

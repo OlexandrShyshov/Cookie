@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cookie ContactPage</title>
+        <link rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" href="../img/favicons/favicon.ico" type="image/x-icon">
+    </head>
+	<body>
+		<div class="wrapper">
+			@@include('blocks/header.html')
+			<main class="page">
+
+				<section class="page__contact contact">
+                    <div class="contact__container">
+                        <h2 class="contact__container--title"><span>Contact</span> Cookie Couture</h2>
+                        <p class="contact__container--text">Ask for more information using this form. We will get in touch with you.</p>
+                    </div>
+                </section>
+
+                <section class="page__form form">
+                    <div class="form__container">
+                        <form class="form__block" action="!#" method="post">
+							<div class="form__topic">
+								<label class="form__title" for="topic">Topic*</label>
+								<!-- Topic Section -->
+								<div class="form__topic-flex">
+									<input type="checkbox" id="topic1" name="topic">
+									<label class="form__text" for="topic1">Jobs</label>
+								</div>
+   
+							   <div class="form__topic-flex">
+								   <input type="checkbox" id="topic2" name="topic">
+								   <label class="form__text" for="topic2">Franchise</label>
+							   </div>
+   
+							   <div class="form__topic-flex">
+								   <input type="checkbox" id="topic3" name="topic">
+								   <label class="form__text" for="topic3">Catering</label>
+							   </div>
+   
+							   <div class="form__topic-flex">
+								   <input type="checkbox" id="topic4" name="topic">
+								   <label class="form__text" for="topic4">Media & Press</label>
+							   </div>
+   
+							   <div class="form__topic-flex">
+								   <input type="checkbox" id="topic5" name="topic">
+								   <label class="form__text" for="topic5">Others</label>
+							   </div>
+							</div>
+
+							<div class="form__flex">
+								<!-- Name Section -->
+								<label class="form__title" for="name">Name*</label>
+								<input class="form__text" type="text" id="name" name="name" placeholder="Your name" required>
+							</div>
+							
+							<div class="form__flex">
+								<!-- Email Section -->
+								<label class="form__title" for="email">Email*</label>
+								<input class="form__text" type="email" id="email" name="email" placeholder="Your email" required>
+							</div>
+
+							<div class="form__flex">
+								<!-- Phone Section -->
+								<label class="form__title" for="phone">Phone*</label>
+								<input class="form__text" type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+							</div>
+
+							<div class="form__flex">
+								<!-- Message Section -->
+								<label class="form__title" for="message">Message*</label>
+								<textarea class="form__text" id="message" name="message" rows="4" cols="50" placeholder="Your message" required></textarea>
+							</div>
+
+							<div class="form__consent-checkbox">
+								<input type="checkbox" id="consent" name="consent" required>
+								<label class="form__consent-checkbox--text" for="consent">
+								  By providing my data, I agree that cookie couture may contact me and I agree to the terms and conditions and privacy policy.*
+								</label>
+							</div>
+  
+							<!-- Submit Button -->
+  							<button class="form__btn" type="submit">Submit</button>
+						</form>
+                    </div>
+                </section>
+				
+			</main>
+			@@include('blocks/footer.html')
+		</div>
+		<script src="./js/index.bundle.js"></script>
+	</body>
+</html>

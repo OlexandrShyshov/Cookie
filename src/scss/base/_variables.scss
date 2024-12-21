@@ -1,0 +1,19 @@
+@use 'mixins';
+
+// Default font settings
+$fontFamily: "Kollektif", sans-serif;
+$fontSize: mixins.toRem(16);
+
+$minWidth: 320;
+$maxWidth: 1466;
+$maxWidthContainer: 0;
+$containerPadding: 136;
+
+// Спрацювання першого брейкпоїнта / First breakpoint triggered
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Breakpoints
+$pc: mixins.toEm($containerWidth);
+$tablet: mixins.toEm(991.98);
+$mobile: mixins.toEm(767.98);
+$mobileSmall: mixins.toEm(479.98);

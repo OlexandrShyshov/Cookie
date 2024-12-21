@@ -1,0 +1,50 @@
+@use "sass:math";
+
+@use '../base/adaptive';
+@use '../base/mixins';
+@use '../base/variables';
+
+//type 1 or 2
+$responsiveType: 1;
+
+@if ($responsiveType==1) {
+	// Чуйна / Responsive
+	[class*="__container"] {
+		@if (variables.$maxWidthContainer>0) {
+			max-width: mixins.toRem($containerWidth);
+			margin: 0 auto;
+		}
+		@if (variables.$containerPadding>0) {
+			@if (variables.$maxWidthContainer>0) {
+				padding: 0 mixins.toRem(math.div(variables.$containerPadding, 2));
+			} @else {
+				@include adaptive.adaptiveValue("padding-left", math.div(variables.$containerPadding, 2), 15);
+				@include adaptive.adaptiveValue("padding-right", math.div(variables.$containerPadding, 2), 15);
+			}
+		}
+	}
+} @else {
+	// Брейк-поїнтами / With breakpoints
+	[class*="__container"] {
+		margin: 0 auto;
+		@if (variables.$maxWidthContainer>0) {
+			max-width: mixins.toRem($containerWidth);
+		} @else {
+			@if (variables.$containerPadding>0) {
+				padding: 0 mixins.toRem(math.div(variables.$containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: mixins.toRem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: mixins.toRem(750);
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if (variables.$containerPadding>0 and variables.$maxWidthContainer>0) {
+				padding: 0 mixins.toRem(math.div(variables.$containerPadding, 2));
+			}
+		}
+	}
+}

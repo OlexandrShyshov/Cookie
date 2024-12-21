@@ -1,0 +1,222 @@
+@use '../base/colors';
+@use '../base/mixins';
+@use '../base/adaptive';
+@use '../base/variables';
+
+
+/* page Franchise */
+.how {
+    position: relative;
+    padding-top: mixins.toRem(150);
+    padding-bottom: mixins.toRem(200);
+    padding-right: mixins.toRem(89);
+    padding-left: mixins.toRem(89);
+    background: colors.$bgLinear;
+    @include adaptive.adaptiveValue('padding-left', 89, 15, 0, 1466, 767.98);
+    @include adaptive.adaptiveValue('padding-right', 89, 15, 0, 1466, 767.98);
+    @media (max-width: variables.$mobile) {
+        @include adaptive.adaptiveValue('padding-top', 150, 80, 0, 767.98, 320);
+    }
+
+    // .how__works
+    &__works {
+        position: absolute;
+        top: mixins.toRem(-45);
+        left: 0;
+        color: colors.$colorWhite;
+        background-color: colors.$colorBlack;
+        padding-top: mixins.toRem(21);
+        padding-bottom: mixins.toRem(21);
+        padding-right: mixins.toRem(128);
+        padding-left: mixins.toRem(156);
+        font-size: mixins.toRem(41);
+        font-family: 'Lena';
+        span{
+            font-family: 'KollektifBold';
+            @include adaptive.adaptiveValue('font-size', 40, 30);
+        }
+
+        @media (max-width: variables.$mobile) {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            text-align: center;
+            @include adaptive.adaptiveValue('padding-top', 21, 11, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-bottom', 21, 11, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('font-size', 41, 28, 0, 767.98, 320);
+            span{
+                @include adaptive.adaptiveValue('font-size', 40, 27, 0, 767.98, 320);
+            }
+        }
+    }
+
+    // .how__big-block
+    &__big-block {
+        display: flex;
+        flex-direction: column;
+        gap: mixins.toRem(85);
+    }
+
+    // .how__smoll-block
+    &__smoll-block {
+        position: relative;
+        padding-top: mixins.toRem(37);
+        padding-bottom: mixins.toRem(68);
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: mixins.toRem(13);
+        background: colors.$bgJobs;
+        @include adaptive.adaptiveValue('padding-left', 176, 75, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('padding-right', 86, 25, 0, 1466, 767.98);
+        &::before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            width: mixins.toRem(4);
+            height: 130%;
+            background: colors.$colorBlack;
+        }
+        &:last-child{
+            &::before{
+                display: none;
+            }
+        }
+
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('padding-left', 75, 20, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-right', 25, 20, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-top', 37, 68, 0, 767.98, 320);
+            @include adaptive.adaptiveValue('padding-bottom', 68, 37, 0, 767.98, 320);
+        }
+
+        // .how__smoll-block--title
+        &--title {
+            font-family: 'KollektifBold';
+            transform: translateY(mixins.toRem(-50));
+            opacity: 0;
+            @include adaptive.adaptiveValue('font-size', 30, 25, 0, 1466, 767.98);
+            &._watcher-view{
+                transform: translateY(mixins.toRem(0));
+                opacity: 1;
+                transition: all 0.5s 0.5s;
+            }
+        }
+
+        // .how__smoll-block--partnership
+        &--partnership {
+            font-family: 'Kollektif';
+            font-size: mixins.toRem(18);
+            text-align: justify;
+            line-height: 166.667%;
+            transform: translateY(mixins.toRem(-50));
+            opacity: 0;
+            @include adaptive.adaptiveValue('font-size', 18, 16, 0, 1466, 767.98);
+            &._watcher-view{
+                transform: translateY(mixins.toRem(0));
+                opacity: 1;
+                transition: all 0.5s 0.7s;
+            }
+        }
+    }
+
+    // .how__scoreboard
+    &__scoreboard {
+        position: absolute;
+        color: colors.$colorWhite;
+        background: colors.$colorBlack;
+        font-family: 'KollektifBold';
+        @include adaptive.adaptiveValue('top', -31, -21, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('left', -85, -50, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('padding-top', 27, 10, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('padding-bottom', 27, 10, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('padding-right', 40, 23, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('padding-left', 40, 23, 0, 1466, 767.98);
+        @include adaptive.adaptiveValue('font-size', 30, 20, 0, 1466, 767.98);
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('left', -85, -20, 0, 1466, 767.98);
+        }
+    }
+}
+
+//========================================================================================================================================================
+.application {
+    padding-top: mixins.toRem(74);
+    padding-bottom: mixins.toRem(100);
+    background: colors.$bgJobs;
+
+    // .application__container
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // .application__box
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(mixins.toRem(-100));
+        opacity: 0;
+        @include adaptive.adaptiveValue('max-width', 675, 475, 0, 1466, 767.98);
+        &._watcher-view{
+            transform: translateY(mixins.toRem(0));
+            opacity: 1;
+            transition: all 0.5s 0.5s;
+        }
+
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('max-width', 475, 290, 0, 767.98, 320);
+        }
+    }
+
+    // .application__title
+    &__title {
+        font-family: 'Lena';
+        font-size: mixins.toRem(40);
+        text-align: center;
+        @include adaptive.adaptiveValue('padding-bottom', 50, 30, 0, 1466, 767.98);
+        span{
+            font-family: 'KollektifBold';
+        }
+    }
+
+    // .application__text
+    &__text {
+        font-family: 'Kollektif';
+        font-size: mixins.toRem(18);
+        text-align: center;
+        line-height: 166.667%;
+        @include adaptive.adaptiveValue('padding-bottom', 90, 50, 0, 1466, 767.98);
+    }
+
+    // .application__btn
+    &__btn {
+        padding-top: mixins.toRem(11);
+        padding-bottom: mixins.toRem(7);
+        text-align: center;
+        font-family: 'Lena';
+        font-size: mixins.toRem(20);
+        border: mixins.toRem(1) solid colors.$colorBlack;
+        border-radius: mixins.toRem(3);
+        transition: all 0.5s;
+        @include adaptive.adaptiveValue('width', 592, 441, 0, 1466, 767.98);
+        span{
+            font-family: 'KollektifBold';
+        }
+
+        @media (any-hover: hover){
+            &:hover{
+                background: colors.$colorBlack;
+                color: colors.$colorWhite;
+                transition: all 0.5s;
+            }
+        }
+        
+        @media (max-width: variables.$mobile) {
+            @include adaptive.adaptiveValue('width', 475, 290, 0, 767.98, 320);
+        }
+    }
+}
