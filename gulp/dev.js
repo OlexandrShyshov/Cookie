@@ -193,11 +193,11 @@ export function fontsDev() {
 
 
 // Task for copying downloadable files
-export function filesDev() {
-    return gulp.src('./src/files/**/*')
-        .pipe(changed('./build/files/'))
-        .pipe(gulp.dest('./build/files/'));
-}
+//export function filesDev() {
+    //return gulp.src('./src/files/**/*')
+        //.pipe(changed('./build/files/'))
+        //.pipe(gulp.dest('./build/files/'));
+//}
 
 
 // BrowserSync configuration
@@ -217,10 +217,10 @@ export function watchFilesDev() {
     gulp.watch('./src/html/**/*.html', htmlDev);
     gulp.watch('./src/img/**/*', imagesDev);
     gulp.watch('./src/fonts/**/*', fontsDev);
-    gulp.watch('./src/files/**/*', filesDev);
+    //gulp.watch('./src/files/**/*', filesDev);
     gulp.watch('./src/js/**/*.js', jsDev);
 }
 
 
 // Main task for development
-gulp.task('build:dev', gulp.series(cleanDistDev, gulp.parallel(htmlDev, stylesDev, jsDev, imagesDev, svgStackDev, svgSymbolDev, fontsDev, filesDev, serverTaskDev)));
+gulp.task('build:dev', gulp.series(cleanDistDev, gulp.parallel(htmlDev, stylesDev, jsDev, imagesDev, svgStackDev, svgSymbolDev, fontsDev, /* filesDev, */ serverTaskDev)));

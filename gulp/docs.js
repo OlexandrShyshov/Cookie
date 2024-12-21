@@ -211,11 +211,11 @@ export function fontsDocs() {
 
 
 // Task for copying downloadable files
-export function filesDocs() {
-    return gulp.src('./src/files/**/*')
-        .pipe(changed('./docs/files/'))
-        .pipe(gulp.dest('./docs/files/'))
-}
+//export function filesDocs() {
+    //return gulp.src('./src/files/**/*')
+        //.pipe(changed('./docs/files/'))
+        //.pipe(gulp.dest('./docs/files/'))
+//}
 
 
 // BrowserSync configuration
@@ -230,4 +230,4 @@ export function serverTaskDocs() {
 
 
 // Main task for production mode (docs)
-gulp.task('build:docs', gulp.series(cleanDistDocs, gulp.parallel(htmlDocs, stylesDocs, jsDocs, imagesDocs, svgStackDocs, svgSymbolDocs, fontsDocs, filesDocs, serverTaskDocs)));
+gulp.task('build:docs', gulp.series(cleanDistDocs, gulp.parallel(htmlDocs, stylesDocs, jsDocs, imagesDocs, svgStackDocs, svgSymbolDocs, fontsDocs, /* filesDocs, */ serverTaskDocs)));
