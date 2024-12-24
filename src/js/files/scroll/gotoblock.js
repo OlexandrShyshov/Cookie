@@ -1,10 +1,9 @@
 import { isMobile, menuClose, getHash, FLS } from "../../moduls/functions.js";
-// Підключення доповнення для збільшення можливостей
-// Документація: https://github.com/cferdinandi/smooth-scroll
+// Documentation: https://github.com/cferdinandi/smooth-scroll
 // import SmoothScroll from 'smooth-scroll';
 
 
-// Модуль плавної проктутки до блоку
+//Smooth flow module to the block //Модуль плавної прокрутки до блоку
 export let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
 	const targetBlockElement = document.querySelector(targetBlock);
 	if (targetBlockElement) {
@@ -32,14 +31,14 @@ export let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 
 			offset: offsetTop,
 			easing: 'easeOutQuad',
 		};
-		// Закриваємо меню, якщо воно відкрите
+		//Close the menu if it is open //Закриваємо меню, якщо воно відкрите
 		document.documentElement.classList.contains("menu-open") ? menuClose() : null;
 
 		if (typeof SmoothScroll !== 'undefined') {
-			// Прокручування з використанням доповнення
+			//Scrolling using the add-on //Прокручування з використанням доповнення
 			new SmoothScroll().animateScroll(targetBlockElement, '', options);
 		} else {
-			// Прокручування стандартними засобами
+			//Scrolling by standard means //Прокручування стандартними засобами
 			let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
 			targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
 			targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;

@@ -8,20 +8,20 @@ import './libs/watcher.js';
 import './libs/dynamic_adapt.js';
 
 
-/* ==== Додавання класу touch для HTML, якщо браузер мобільний ==== */
+/* ==== Adding the touch class to HTML if the browser is mobile ==== */
 //addTouchClass()
 
-/* ==== Додавання класу loaded для HTML після повного завантаження сторінки ==== */
+/* ==== Adding the loaded class to HTML after the page is fully loaded ==== */
 addLoadedClass()
 
-/* ==== Додавання меню (бургер) на сторінку ==== */
+/* ==== Adding a menu (burger) to a page ==== */
 menuInit()
 
-/* ==== Додавання класів до хедеру під час прокручування ==== */
+/* ==== Adding classes to the header while scrolling ==== */
 headerScroll()
 
-/* ==== Анімації цифрового лічильника ==== */
+/* ==== Digital counter animations ==== */
 //digitsCounter()
 
-/* ==== Плавна навігація по сторінці ==== */
+/* ==== Smooth page navigation ==== */
 //pageNavigation()

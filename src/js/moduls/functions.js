@@ -1,4 +1,4 @@
-// Перевірка мобільного браузера 
+//Check if the browser is mobile //Перевірка чи браузер є мобільний 
 export let isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
@@ -19,12 +19,11 @@ export let isMobile = {
         return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
     },
 };
-/* Додавання класу touch для HTML, якщо браузер мобільний */
+//Adding the touch class to HTML if the browser is mobile //Додавання сенсорного класу до HTML, якщо браузер мобільний
 export function addTouchClass() {
-	// Додавання класу _touch для HTML, якщо браузер мобільний
 	if (isMobile.any()) document.documentElement.classList.add('touch');
 }
-// Додавання loaded для HTML після повного завантаження сторінки 
+//Adding loaded to HTML after the page is fully loaded //Додавання завантажується в HTML після повного завантаження сторінки
 export function addLoadedClass() {
 	if (!document.documentElement.classList.contains('loading')) {
 		window.addEventListener("load", function () {
@@ -34,11 +33,11 @@ export function addLoadedClass() {
 		});
 	}
 }
-// Отримання хешу на адресі сайту
+//Getting a hash of a website address //Отримання хешу адреси сайту
 export function getHash() {
 	if (location.hash) { return location.hash.replace('#', ''); }
 }
-// Допоміжні модулі блокування прокручування та стрибка + + + ====================================================================================================================================================================================================================================================================================
+//Scroll and jump blocking helper modules //Допоміжні модулі блокування прокручування та стрибка
 export let bodyLockStatus = true
 export let bodyLockToggle = (delay = 500) => {
 	if (document.documentElement.classList.contains('lock')) {
@@ -80,7 +79,7 @@ export let bodyLock = (delay = 500) => {
 		}, delay)
 	}
 }
-// Модуль роботи з меню (бургер)  =======================================================================================================================================================================================================================
+//Menu module (burger) //Модуль роботи з меню (бургер)
 export function menuInit() {
 	if (document.querySelector(".icon-menu")) {
 		document.addEventListener("click", function (e) {
@@ -107,13 +106,13 @@ export function FLS(message) {
 		}
 	}, 0);
 }
-// Унікалізація масиву
+//Array uniqueness //Унікалізація масиву
 export function uniqArray(array) {
 	return array.filter(function (item, index, self) {
 		return self.indexOf(item) === index;
 	});
 }
-// Форматування цифр типу 100 000 000
+//Formatting numbers like 100,000,000 //Форматування цифр типу 100 000 000
 export function getDigFormat(item, sepp = ' ') {
 	return item.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, `$1${sepp}`);
 }

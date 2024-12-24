@@ -5,13 +5,13 @@ class DynamicAdapt {
 		this.type = type
 	}
 	init() {
-		// масив об'єктів
+		//array of objects //масив об'єктів
 		this.оbjects = []
 		this.daClassname = '_dynamic_adapt_'
-		// масив DOM-елементів
+		//array of DOM elements //масив DOM-елементів
 		this.nodes = [...document.querySelectorAll('[data-da]')]
 
-		// наповнення оbjects об'єктами
+		//filling objects with objects //наповнення оbjects об'єктами
 		this.nodes.forEach((node) => {
 			const data = node.dataset.da.trim()
 			const dataArray = data.split(',')
@@ -27,19 +27,18 @@ class DynamicAdapt {
 
 		this.arraySort(this.оbjects)
 
-		// масив унікальних медіа-запитів
+		//array of unique media queries //масив унікальних медіа-запитів
 		this.mediaQueries = this.оbjects
 			.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint / 16}em),${breakpoint}`)
 			.filter((item, index, self) => self.indexOf(item) === index)
 
-		// навішування слухача на медіа-запит
-		// та виклик оброблювача при першому запуску
+		//attaching a listener to a media request and call the handler on first run //навішування слухача на медіа-запит та виклик оброблювача при першому запуску
 		this.mediaQueries.forEach((media) => {
 			const mediaSplit = media.split(',')
 			const matchMedia = window.matchMedia(mediaSplit[0])
 			const mediaBreakpoint = mediaSplit[1]
 
-			// масив об'єктів з відповідним брейкпоінтом
+			//array of objects with corresponding breakpoint //масив об'єктів з відповідним брейкпоінтом
 			const оbjectsFilter = this.оbjects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint)
 			matchMedia.addEventListener('change', () => {
 				this.mediaHandler(matchMedia, оbjectsFilter)
@@ -47,11 +46,11 @@ class DynamicAdapt {
 			this.mediaHandler(matchMedia, оbjectsFilter)
 		})
 	}
-	// Основна функція
+	//Main function //Основна функція
 	mediaHandler(matchMedia, оbjects) {
 		if (matchMedia.matches) {
 			оbjects.forEach((оbject) => {
-				// оbject.index = this.indexInParent(оbject.parent, оbject.element);
+				//оbject.index = this.indexInParent(оbject.parent, оbject.element);
 				this.moveTo(оbject.place, оbject.element, оbject.destination)
 			})
 		} else {
@@ -62,7 +61,7 @@ class DynamicAdapt {
 			})
 		}
 	}
-	// Функція переміщення
+	//Move function //Функція переміщення
 	moveTo(place, element, destination) {
 		element.classList.add(this.daClassname)
 		if (place === 'last' || place >= destination.children.length) {
@@ -75,7 +74,7 @@ class DynamicAdapt {
 		}
 		destination.children[place].before(element)
 	}
-	// Функція повернення
+	//Return function //Функція повернення
 	moveBack(parent, element, index) {
 		element.classList.remove(this.daClassname)
 		if (parent.children[index] !== undefined) {
@@ -84,13 +83,13 @@ class DynamicAdapt {
 			parent.append(element)
 		}
 	}
-	// Функція отримання індексу всередині батьківського єлементу
+	//Function to get index inside parent element //Функція отримання індексу всередині батьківського єлементу
 	indexInParent(parent, element) {
 		return [...parent.children].indexOf(element)
 	}
-	// Функція сортування масиву по breakpoint та place
-	// за зростанням для this.type = min
-	// за спаданням для this.type = max
+	//Function to sort an array by breakpoint and place //Функція сортування масиву по breakpoint та place
+	//ascending for this.type = min //за зростанням для this.type = min
+	//descending for this.type = max //за спаданням для this.type = max
 	arraySort(arr) {
 		if (this.type === 'min') {
 			arr.sort((a, b) => {

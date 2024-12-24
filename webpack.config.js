@@ -3,7 +3,7 @@ export default {
 
     entry: {
         index: './src/js/index.js',
-        royall: './src/js/royall.js',
+        accordion: './src/js/accordion.js',
         // add a new JS file -> connect it
     },
 
