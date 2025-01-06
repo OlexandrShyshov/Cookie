@@ -34,7 +34,7 @@ The website consists of several pages:
 
 ## How to view the project
 
-1. Go to the https://firstprojectcookie.netlify.app/ to view the live version of the project.
+1. Go to the [https://firstprojectcookie.netlify.app/](https://cookiepage.netlify.app/) to view the live version of the project.
    
 Or follow these steps to run the project locally:
 
